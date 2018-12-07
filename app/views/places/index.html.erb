@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>Places</h1>
+<div class="row">
+    <% @places.each do |place| %>
+       <div class="col-md-3">
+                <div class="card" style="width: 18">
+                   <%= image_tag( "useless_welcome_3.jpg", :class =>"card-img-right flex-auto d-none d-md-block", :alt =>"Card image cap",:height => "200px") %>
+                    <div class="card-body">
+                        <h5 class="card-title"> <%= place.name %></h5>
+                        <p class="card-text"><%= place.description %></p>
+                        <a href="<%= place_appointments_path(place)%> " class="btn btn-primary">Appointment</a>
+                        <% if is_admin %>
+                            <td><%= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+    <% end %>
+</div>
+
+<% if is_admin %>
+<%= link_to 'New Place', new_place_path %>
+<% end %>

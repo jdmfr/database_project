@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing posts</h1>
+
+
+
+
+<%= button_to 'New Post', new_post_path , :class => "btn btn-primary"  ,:method => "get"  %>
+
+
+
+
+
+<div class="topics">
+  <table class="table">
+    <thead class="thead-default">
+      <tr class="topic">
+        <th class="title"><%= t('activerecord.attributes.homeland/topic.title')%></th>
+       
+        <th class="author"><%= t('activerecord.attributes.homeland/topic.user')%></th>
+        <th class="replies"><%= t('activerecord.attributes.homeland/topic.replies_count')%></th>
+        <th class="activity"><%= t('activerecord.attributes.homeland/topic.activity')%></th>
+        <%if current_user%>
+         <th class="node"><%= t('activerecord.attributes.homeland/topic.node')%></th>
+      	<% end %>
+      </tr>
+    </thad>
+    <tbody>
+      <% if @posts.blank? %>
+        <tr>
+          <th>
+            <span class="text-mutted">
+              <%= t('homeland.topics.empty') %>
+            </span>
+          </td>
+        </tr>
+      <% else %>
+        <%= render @posts %>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

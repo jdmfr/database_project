@@ -1,0 +1,24 @@
+
+<tr class="topic">
+  <td class="title">
+    <%=  appointment.place.name  %>
+  </td>
+
+  <td class="author">
+    <%= appointment.group.name %>
+  </td>
+  <td class="replies">
+    <%= appointment.app_date %>
+  </td>
+  <td class="activity">
+    Posted <%= time_ago_in_words appointment.created_at %> ago.
+  </td>
+
+  <td class="node">
+    <% if is_admin or is_belonger(appointment.group.user.id) %>
+    <%= button_to 'Edit', edit_place_appointment_path(id: appointment.id),method: :get , class: "btn btn-primary" %>
+    <br>
+      <%= button_to 'Destroy', place_appointment_url(id: appointment.id), method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger" %>
+    <% end %>
+  </td>
+</tr>

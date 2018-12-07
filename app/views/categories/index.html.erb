@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Categories</h1>
+    <% @categories.each do |category| %>
+      <div class="jumbotron">
+        <div class="row">
+          <div class="col-md-2">
+            <strong>Category:  </strong><br>
+            <h3><%= link_to category.name, projects_path(category: category ) %> </h3>
+          </div>
+          <div class="col-md-2"><strong>Counts</strong><br><%= category.projects.count %></div>
+            
+        
+          <div class="col-md-4">
+              <% category.projects.limit(3).each do |topic| %>
+                <div class="row">
+                  <%= link_to topic.name, project_path(topic) %>
+                  <%= time_tag topic.created_at %>
+                </div>
+              <% end %>
+          </div>
+          <div class="col-md-4">
+            <div class= "row">
+              <% if is_admin %>
+              <center>
+                <div class="col-md-12">
+                <%= button_to '  Edit ',   edit_category_path(category) ,method: :get ,:class =>"btn btn-lg btn-info" %>
+                </div>
+                <div class="col-md-12">
+                <%= button_to   'delete'  , category, method: :delete,:class =>"btn btn-lg btn-outline-warning", data: { confirm: 'Are you sure?' } %>
+                </div>
+                </center>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+
+<% if is_admin  %>
+
+  <%= link_to 'New Category', new_category_path %>
+<% end %>

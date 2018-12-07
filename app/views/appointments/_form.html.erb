@@ -1,0 +1,28 @@
+<%= form_for [ place, appointment] do |form| %>
+  <% if appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+      <% appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+      <% if @groups  != nil %>
+      
+      <div >Group :<%= form.collection_select(:group_id, @groups ,:id, :name,  :class =>"form-control" )%></div>
+      <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :app_date %>
+    <%= form.date_select :app_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

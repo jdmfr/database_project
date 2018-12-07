@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Groups</h1>
+<div class="container">
+<div class="row">
+      <div class="col-md-9">
+          <table>
+            <tbody>
+              <% @groups.each do |group| %>
+                <div class="row">
+                  <div class ="col-md-12">
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                      <div class="card-body d-flex flex-column align-items-start">
+                        <h3 class="mb-0">
+                          <%= link_to group.name, group_path(group), :class=>"text-black" if group%> 
+                        </h3>
+                        <div class="mb-1 text-muted">Established:<%= time_ago_in_words(group.created_at) %> ago</div>
+                        <p class="card-text mb-auto"><%= truncate(strip_tags(group.description),length: 80) if group.description%></p>
+                        
+                          <div class="mb-1 text-muted">Member count: </div><%= group.reload.likes_count %>
+                          
+                      </div>
+                        <% if current_user.id == group.user.id %>
+                           <%= button_to("You are the founder" , group_path(group)  ,method: :get , :class => "btn  btn-info" ) %> 
+                        <% elsif current_user.like_group?(group) ==false %>
+                         <%= button_to("Join the group" ,star_group_path(group)  ,method: :patch , :class => "btn btn-outline-success" ) %> 
+                         <% else %>
+                          <%= button_to( "Exit the group" , star_group_path(group)  , method: :patch , :class => "btn btn-outline-warning"  )%> 
+                          <%end %>
+
+                    </div>
+                </div>
+              </div>
+           
+                <% end %>
+            </tbody>
+          </table>
+      </div>
+        <div class="col-md-3">
+            <div class="list-group">
+              <%= link_to "All Groups", groups_url , :class =>"list-group-item list-group-item-action" %>
+            </div>
+          </div>
+</div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <% if @page > @first_page %>
+      <li class="page-item">
+        <%= link_to groups_path(page: ( @page -1)) ,:class => "page-link" do%>
+        <span aria-hidden="true">previous</span>
+        <% end %>
+      </li>
+    <% end %>
+
+    <% (@first_page..@last_page).each do |page_number| %>
+      <li><%= link_to page_number , groups_path(page: page_number,category: params[:category]),:class => "page-link" %></li>
+    <% end %>
+
+    <% if @page < @last_page %>
+    <li class="page-item">
+      <%= link_to groups_path(page: ( @page +1),category: params[:category] ),:class => "page-link" do%>
+      <span aria-hidden="true">next</span>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</nav>
+
+
+<br>
+</div>
+
+<%= link_to 'New Group', new_group_path %>
+
+

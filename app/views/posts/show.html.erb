@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+<div class ="row">
+  <div class = "col-md-1">
+     <img src="/avatar.png" class="rounded-img" height="35px" width="35px"></img>
+  </div>
+  <div class ="col-md-11">
+      <div class= "row">
+        <h3><%= @post.title %></h3>
+        </br> </br>
+      </div>
+      <div class="row">
+        <small> Posted   <%= time_ago_in_words(@post.created_at) %>  By:<a  href="/user/<%= @post.user.username %>"><%= @post.user.username%></a></small>
+      </div>
+
+      <div class ="row">
+        <%= @post.body%>
+      </div>
+  </div>
+</div>
+
+
+<hr style="filter: alpha(opacity=100,finishopacity=0,style=1)" width="80%" color='#987cb9' size=3>
+
+<h2>Comments</h2>
+	<div id="comments">
+	<%= render :partial => @post.comments %>
+</div>
+
+
+<% if current_user %>
+  <div class="panel panel-default post-form-panel">
+    <div class="panel-body row">
+      
+      <div class="col-sm-1">
+        <img src="/avatar.png" class="rounded-img" height="35px" width="35px"></img>
+      </div>
+      <div class="col-sm-11">
+        <%= form_for [ @post, Comment.new ] do |f| %>
+        
+              <div class="field" style="margin-left: 10px;">
+                <%= f.text_area :content, autofocus: true,:rows => 5, class: "form-control" %>
+                <span type="button" class="btn btn-submit" style="float: right; margin-top: 3px;"><%= f.submit "Add Comment", class: "btn btn-primary" %></span>
+              </div>
+          
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+ <% if current_user.id == @post.user.id %>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>|
+<%= link_to 'Destroy', post_url(@post) ,method: :delete %>
+<% end %>
+

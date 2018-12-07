@@ -1,0 +1,18 @@
+<%= div_for comment do %>
+
+
+  <small>Posted   <%= time_ago_in_words(comment.created_at) %>  By:<a  href="/user/<%= comment.user.username %>"><%= comment.user.username%></a>
+  </small>
+<div class ="row">
+  <div class="col-sm-1">
+        <img src="/avatar.png" class="rounded-img" height="35px" width="35px"></img>
+    </div>
+  <div class="col-sm-11">
+  	<div class="card bg-light card-body">
+		<%= comment.content %>
+		</div>
+	</div>
+</div>
+<hr style="filter: alpha(opacity=100,finishopacity=0,style=1)" width="80%" color='#987cb9' size=3>
+
+<% end %>

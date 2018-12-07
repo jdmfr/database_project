@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<div class= "jumbotron">
+  <div class="row">
+      <div class ="col-md-4">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544159373240&di=4f814950749b391f15338061a714ef21&imgtype=0&src=http%3A%2F%2Fcdn2.ettoday.net%2Fimages%2F1975%2Fd1975857.jpg" class="rounded-img" height="100%" width="100%"></img>
+      </div>
+      <div class ="col-md-8">
+        <div class="row">  
+              <h2><strong><%= @place.name %></strong></h2>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+           Description: <br> <%= @place.description %>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+          Location: <br>  <%= @place.location %> 
+        </div>
+        <br>
+        <div class="row">
+          Appointment count:  <br>  <%= @place.appointments.count %> 
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<h1>Appointments</h1>
+
+<div class="topics">
+  <table class="table">
+    <thead class="thead-default">
+      <tr class="topic">
+        <th class="title">Place</th>
+        <th class="author">Group </th>
+        <th class="replies">Appointment time</th>
+        <th class="activity">Created time</th>
+        <%if current_user%>
+         <th class="node">Do list</th>
+        <% end %>
+      </tr>
+    </thead>
+
+
+    <tbody>
+      <% if @appointments.nil? %>
+        <tr>
+          <th>
+            <span class="text-mutted">
+              <%= t('homeland.topics.empty') %>
+            </span>
+          </td>
+        </tr>
+      <% else %>
+        <%= render @appointments %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<hr style="filter: alpha(opacity=100,finishopacity=0,style=1)" width="80%" color='#987cb9' size=3>
+
+
+<%= button_to 'New Appointment',new_place_appointment_path ,method: :get ,  class: "btn btn-success" %>

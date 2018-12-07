@@ -1,0 +1,28 @@
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="text-center">
+      <%= image_tag('logo.svg' ,:size => "72x72" ,:class =>"mb-4") %>
+      <h1 class="h3 mb-3 font-weight-normal">Please log in</h1>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, :class =>"form-control", autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, :class =>"form-control", autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="checkbox mb-3">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+</div>
+    
+    <%= f.submit "Log in" ,:class => "btn btn-lg btn-primary btn-block" %>
+  
+<% end %>
+
+<%= render "devise/shared/links" %>

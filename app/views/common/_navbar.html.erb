@@ -1,0 +1,49 @@
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <div class="navbar-brand">DorC</div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <%= link_to "Home", root_url,:class => "nav-link" %><span class="sr-only">(current)</span>
+          </li>
+          <a class="nav-link" href="/posts">Posts</a>
+
+
+
+            <% if !current_user %>
+              <li class="nav-item">
+                <%= link_to "Login" ,new_user_session_url ,:class => "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Register" ,new_user_registration_path ,:class => "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle"  id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.username %></a>
+              <div class="dropdown-menu" aria-labelledby="dropdown07">
+                <%= link_to "Show" ,user_path(current_user) ,:class=>"dropdown-item" %>
+              <%= link_to "Edit" ,edit_user_registration_url(current_user) ,:class=>"dropdown-item" %>
+               <%= link_to "Logout" ,destroy_user_session_path ,:class=>"dropdown-item",method: :delete %>
+              </div>
+            </li>
+            <% end %>
+          
+         <% if current_user %>
+          <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle"  id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore</a>
+             <div class="dropdown-menu" aria-labelledby="dropdown07"> 
+                <a class="nav-link" href="/user/<%= current_user.username %>">Profile</a> 
+                <a class="nav-link" href="/explore">Moments</a>
+             </div>
+          </li>
+           <% end %>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>

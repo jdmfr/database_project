@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+<div class= "jumbotron">
+  <div class="row">
+      <div class ="col-md-4">
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544159373240&di=4f814950749b391f15338061a714ef21&imgtype=0&src=http%3A%2F%2Fcdn2.ettoday.net%2Fimages%2F1975%2Fd1975857.jpg" class="rounded-img" height="100%" width="100%"></img>
+      </div>
+      <div class ="col-md-8">
+        <div class="row">  
+              <strong>Name: <br>  <%= @group.name %></strong>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+           Description: <br> <%= @group.description %>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+          Founder: <br>  <%= @group.user.username %> 
+        </div>
+        <br>
+        <br>
+        <div class="row">
+          Member count:  <br>  <%= @group.likes_count %> 
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<%  @appointments.each do |f| %>
+  <div class ="row">
+  <div class="col-sm-1">
+        <img src="/avatar.png" class="rounded-img" height="35px" width="35px"></img>
+    </div>
+  <div class="col-sm-11">
+    <div class="card bg-light card-body">
+      <%= link_to f.place.name , place_appointments_url(place_id: f.place_id) ,method: :get %>   appoint_time: <%= f.app_date %>  
+    </div>
+  </div>
+</div>
+<hr style="filter: alpha(opacity=100,finishopacity=0,style=1)" width="80%" color='#987cb9' size=3>
+<%end %>
+
+<% if is_admin or is_belonger(@group.user.id) %>
+  <%= link_to 'Edit', edit_group_path(@group) %> |
+  <%= link_to 'Back', groups_path %> | 
+  <%= link_to 'Destroy',  @group , method: :delete %>
+<% end %>

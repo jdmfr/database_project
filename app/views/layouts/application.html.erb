@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Databases</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+
+    <%= render 'common/navbar' %>
+    <%= render 'layouts/alert' %>
+
+
+<% if params[:id] != nil %>
+  <% @url = '/user/' + params[:id] %>
+  <% if current_page?(@url) %>
+    <img src="/banner.jpg" class="profile-banner">
+    <div class="row">
+      <div class="col-sm-12" style="background-color: white;">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-4" style="font-size: 100%; opacity: 0.7;">POSTS<br>
+                      <h6 style="color: #0084B4; font-size: 150%;"><%= User.find_by_username(params[:id]).posts.count %></h6>
+              </div>
+              <div class="col-md-4" style="font-size: 100%; opacity: 0.7;">FOLLOWERS<br>
+                      <h6 style="color: #0084B4; font-size: 150%;"><%= User.find_by_username(params[:id]).followers.count %></h6>
+              </div>
+              <% if current.username == params[:id] %>
+              <div class="col-md-4" style="text-align: right; margin-top: 5px;"><a href="/users/edit"><li type="button" class="btn btn-default">EDIT PROFILE</li></a>
+              </div>
+              <%else%>
+              <div class="col-md-4"></div>
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+    <div class= "container">
+        <%= yield %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<div class="row clearfix">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1 class="display-3">Welcome to Bangumi</h1>
+                        <p>This is a simple sports social website .<br> Created by dormouse and haohao.</p>
+                        <% if !current_user %>
+                        <p class="lead">
+                        <%= button_to "login" ,new_user_session_path,:class => "btn btn-primary btn-lg" %>
+                        </p>
+                        <% else %>
+                         <%= button_to "logout" ,destroy_user_session_path,:class => "btn btn-primary btn-lg" ,method: :delete %>
+                        <% end %>
+                </div>
+            </div>     
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card" style="width: 18">
+                    <img class="card-img-top" src="http://www.anicoga.com/wp-content/uploads/2018/07/2018071018413796.jpg" alt="Card image cap" style="height:200px">
+                    <div class="card-body">
+                        <h5 class="card-title"> Sakurajima Mai</h5>
+                        <p class="card-text">Main heroine of "青春ブタ野郎はゆめみる少女の夢を見ない" ,the most famouse bangumi now </p>
+                            <%= button_to "Groups" , groups_url , class: "btn btn-primary" ,method: :get %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" style="width: 18">
+                    <img class="card-img-top" src="http://p0.qhimgs4.com/t013221d12d1e7b34e3.jpg" alt="Card image cap" style="height:200px">
+                    <div class="card-body">
+                        <h5 class="card-title">Totoro</h5>
+                        <p class="card-text">Totoro is delighted at both the shelter and the sounds made upon it by falling raindrops.</p>
+                           <%= button_to "Projects" , projects_url , class: "btn btn-primary" ,method: :get %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" style="width: 18 , height: 100 ">
+                    <%= image_tag( "useless_welcome_3.jpg", :class =>"card-img-right flex-auto d-none d-md-block", :alt =>"Card image cap",:height => "200px") %>
+                    <div class="card-body">
+                        <h5 class="card-title">Megumi Kato</h5>
+                        <p class="card-text">Megumi is Tomoya's classmate and the title character, who despite being good-looking </p>
+                            <%= button_to "Categories" , categories_url , class: "btn btn-primary" ,method: :get %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card" style="width: 18">
+                    <%= image_tag( "useless_welcome_4.jpg", :class =>"card-img-right flex-auto d-none d-md-block", :alt =>"Card image cap",:height => "200px") %>
+                    <div class="card-body">
+                        <h5 class="card-title">Chiya Ujimatsu</h5>
+                        <p class="card-text">Cocoa's classmate and friend at high school, whose family runs a coffee shop of their own</p>
+                            <%= button_to "Places" , places_url , class: "btn btn-primary" ,method: :get %>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+
+<% if current_user %>
+
+<%= link_to 'Sign out' , destroy_user_session_path  , method:  :delete %>
+<%= link_to 'Groups' ,groups_path %> 
+<%else %>
+<%= link_to 'Sign up' , new_user_registration_path %>
+<%= link_to 'Sign in' , new_user_session_path %>
+<% end %>
+
+
+<%= link_to 'Posts' ,posts_path %> 
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

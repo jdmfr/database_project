@@ -1,0 +1,228 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+@import "bootstrap" ;
+
+body {
+    background-color: rgba(212, 216, 212, 0.25);
+}
+.rounded-img {
+    border-radius: 5%;
+}
+.navbar {
+    background-color: white;
+}
+.navbar-brand {
+    position: absolute;
+    left: 50%;
+    margin-right: 25px !important;
+    display: block;
+}
+.post-panel {
+    margin-top: -21px;
+}
+.post-title {
+    text-align: left;
+    margin-left: 15px;
+}
+.post-content {
+    text-align: left;
+    margin-left: 15px;
+}
+.post-links {
+    text-align: left;
+}
+.post-owner {
+    color: black;
+    font-weight: bold;
+}
+.post-creation {
+    opacity: 0.7;
+}
+.g-links {
+    opacity: 0.4;
+    font-size: 120%;
+    margin-right: 75px;
+}
+.post-form-panel {
+    margin-bottom: -21px;
+}
+.panel-image img.panel-image-preview {
+    width: 100%;
+    border-radius: 4px 4px 0px 0px;
+}
+.panel-heading ~ .panel-image img.panel-image-preview {
+    border-radius: 0px;
+}
+.panel-image ~ .panel-body, .panel-image.hide-panel-body ~ .panel-body {
+    overflow: hidden;
+}
+.panel-image ~ .panel-footer a {
+    padding: 0px 10px;
+    font-size: 1.3em;
+    color: rgb(100, 100, 100);
+}
+.panel-image.hide-panel-body ~ .panel-body {
+    height: 0px;
+    padding: 0px;
+}
+.panel-footer {
+    background-color: white;
+}
+.profile-banner {
+    width: 100%;
+    height: 500px;
+    margin-top: -21px;
+}
+
+
+
+
+.main-layout {
+  margin-top: 30px;
+}
+
+.node-badge {
+  display: inline-block;
+  width: 10px; height: 10px;
+  margin-right: 2px;
+}
+
+.avatar {
+  width: 48px; height: 48px;
+  border-radius: 180px;
+}
+
+.timeago { color: #999; text-decoration: none; }
+
+.btn-opt {
+  line-height: 100%;
+  padding: 6px 8px 8px 8px;
+  font-size: 14px;
+  display: inline-block;
+
+  &:link,
+  &:visited,
+  &:active {
+    color: #555;
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+    background: #F0F0F0;
+  }
+}
+
+.topics {
+  .topic {
+    font-size: 13px;
+    td { padding-top: 13px; padding-bottom: 13px; }
+    td.title {
+      font-size: 16px;
+    }
+    .node {
+      width: 150px; font-weight: bold;
+      a { color: #444; display:inline-block;}
+    }
+    .author {
+      width: 40px;
+      .avatar { width: 24px; height: 24px; }
+    }
+    .replies { width: 100px; }
+    .activity { width: 50px; }
+  }
+}
+
+.topic-detail {
+  padding-bottom: 40px;
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+
+    .node { display: inline-block; font-size: 14px; margin-left: 10px; }
+  }
+
+  .reply {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+
+    .media-left {
+      .media-object { width: 48px; height: 48px; border-radius: 180px; }
+    }
+
+    .media-heading {
+      font-size: 14px;
+
+      .date { color: #999; font-size: 13px; }
+    }
+
+    .reply-to {
+      font-size: 12px;
+      background: #f9f9f9;
+
+      .heading {
+        font-size: 14px;
+      }
+
+      .opts {
+      }
+    }
+    .media-footer {
+    }
+  }
+}
+
+#reply-panel {
+  padding-bottom: 40px;
+
+  &.navbar-light {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #eee !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.28);
+  }
+}
+
+.nodes {
+  margin-bottom: 20px;
+
+  .node-item {
+    padding: 15px 15px;
+    border: 1px solid #eee;
+    &:last-child {
+      border-bottom: 1px solid #eee;
+    }
+    border-bottom: 0px;
+    border-left: 5px solid #EEE;
+
+
+    .info {
+      .title {
+        font-size: 18px; font-weight: bold;
+        .count { font-weight: normal; font-size: 14px; }
+      }
+      .desc { color: #666; margin-top: 10px; }
+    }
+
+    .topics {
+      .item {
+        margin: 3px;
+        a { color: #333;  font-size: 13px; }
+        .timeago { font-size: 12px; }
+      }
+    }
+  }
+}
